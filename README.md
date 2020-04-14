@@ -26,8 +26,9 @@ In the examples the backup folder's name is 'try_borg' and the s3 bucket 'borgba
 
 1. Install borg.
 2. Init borg repo. 
+In borg if you want to attach a backup repository to a user you need to include also user@localhost. Otherwise some files will belong to root. See also step 3 below.
 `borg init --encryption=none dameko@localhost:/home/dameko/Documents/try_borg/`
-3. I got a lot of errors while trying to initialize and backup to the folder while mounted with the default permissions. Thus, I chose to not use the root user at all. In production you may need to create a new user, disable root access etc.
+3. I got a lot of errors while trying to initialize and backup to the folder while mounted, with the default permissions of the backup. Thus, I chose to not use the root user at all. In production you may need to create a new user, disable root access etc.
 ```
 sudo chmod 700 -R /home/dameko/.config/borg
 sudo chmod 700 -R /home/dameko/.cache/borg
